@@ -1,10 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HotelDevExpress.Default" %>
 
+<%@ Register Assembly="DevExpress.XtraCharts.v20.1.Web, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraCharts.Web" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.XtraCharts.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraCharts" tagprefix="dx" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com -->
-  <title>Bootstrap Theme Company Page</title>
+  <title>Hotel Transylvania</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -202,7 +208,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+        <dx:aspximage runat="server" showloadingimage="true" Height="55px" ImageUrl="~/images/headelogo.png" Width="300px"></dx:aspximage>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -214,91 +220,150 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav>  
+<form runat="server">
+<div class="jumbotron text-center" style= " background-image: url('images/back1.jpg');height: 500px;">
 
-<div class="jumbotron text-center">
-  <h1>Company</h1> 
-  <p>We specialize in blablabla</p> 
-  <form>
-    <div class="input-group">
-      <input type="email" class="form-control" size="50" placeholder="Email Address" required>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-danger">Subscribe</button>
-      </div>
-    </div>
-  </form>
+
+ 
+        <div style="text-align: left">
+            <table> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Lokasyon seçin" Font-Size="Medium"></dx:ASPxLabel>
+                <dx:ASPxComboBox ID="CMB1" runat="server" Width="285px" DropDownWidth="550px"
+                    ValueField="ID" TextFormatString="{0}" EnableCallbackMode="True"
+           IncrementalFilteringMode="StartsWith" CallbackPageSize="30" DataSourceID="SqlDataSource3" NullValueItemDisplayText="{0}" Theme="Office365" >
+
+                    <Columns>
+                        <dx:ListBoxColumn FieldName="ID" Width="130px"></dx:ListBoxColumn>
+                        <dx:ListBoxColumn FieldName="ULKE" Width="100px"></dx:ListBoxColumn>
+                        <dx:ListBoxColumn FieldName="SEHIR" Width="70px"></dx:ListBoxColumn>
+                     </Columns>
+                </dx:ASPxComboBox>
+
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HotelDxDBConnectionString %>" SelectCommand="SELECT * FROM [TBLULKE]"></asp:SqlDataSource>
+
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+
+                    <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Kişi Sayısı Seçin" Font-Size="Medium"></dx:ASPxLabel>
+                    <dx:ASPxSpinEdit ID="ASPxSpinEdit1" runat="server" Number="0" Theme="Office365">
+                    </dx:ASPxSpinEdit>
+                    <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Giriş Tarihi" Font-Size="Medium" ></dx:ASPxLabel>
+                <tr><dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Date="07/24/2021 16:41:27" Theme="SoftOrange">
+                        <DropDownButton>
+                            <Image IconID="scheduling_workweekview_svg_16x16">
+                            </Image>
+                        </DropDownButton>
+                </dx:ASPxDateEdit>
+               </tr>
+                    <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Çıkış Tarihi"   Font-Size="Medium"  Font-Italic="True"></dx:ASPxLabel>
+                <tr><dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" Date="07/24/2021 16:41:15" Theme="SoftOrange">
+                        <DropDownButton>
+                            <Image IconID="scheduling_workweekview_svg_16x16">
+                            </Image>
+                        </DropDownButton>
+                </dx:ASPxDateEdit>
+               </tr>
+                &nbsp;
+                  &nbsp;
+                <tr>
+                      <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Oda Ara" CssClass="btn btn-warning" Width="60px " ></dx:ASPxButton>
+                </tr>
+                  
+               
+            </table>
+        </div>
+   
 </div>
+
 
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2>About Company Page</h2><br>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <br><button class="btn btn-default btn-lg">Get in Touch</button>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
-    </div>
-  </div>
+    <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ImageSourceFolder="/SliderImages" SettingsNavigationBar-Mode="Dots" Width="1000px">
+        <SettingsAutoGeneratedImages ImageCacheFolder="~/Thumb/" />
+    </dx:ASPxImageSlider>
 </div>
 
-<div class="container-fluid bg-grey">
-  <div class="row">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo slideanim"></span>
-    </div>
-    <div class="col-sm-8">
-      <h2>Our Values</h2><br>
-      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-</div>
 
 <!-- Container (Services Section) -->
 <div id="services" class="container-fluid text-center">
-  <h2>SERVICES</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-leaf logo-small"></span>
-      <h4>GREEN</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
-      <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
+
+<div>
+    <table>
+        <tr>
+            <td>  <dx:WebChartControl ID="WebChartControl1" runat="server" Height="400px" Width="400px" CrosshairEnabled="True">     
+                <DiagramSerializable>
+                    <dx:XYDiagram>
+                        <axisx visibleinpanesserializable="-1">
+                        </axisx>
+                        <axisy visibleinpanesserializable="-1">
+                        </axisy>
+                    </dx:XYDiagram>
+                </DiagramSerializable>
+<Legend Name="Default Legend"></Legend>
+                <SeriesSerializable>
+                    <dx:Series Name="Aylar">
+                    </dx:Series>
+                </SeriesSerializable>
+                </dx:WebChartControl>
+
+            </td>
+              <td>
+                &nbsp; 
+                  &nbsp;
+              </td>
+               
+              <td>
+                  <dx:WebChartControl ID="WebChartControl3" runat="server" Width="400px" Height="400px" CrosshairEnabled="True">
+                      <Legend Name="Default Legend"></Legend>
+                    <SeriesSerializable>
+                        <dx:Series Name="Ulkeler">
+                            <ViewSerializable>
+                                <dx:PieSeriesView>
+                                </dx:PieSeriesView>
+                            </ViewSerializable>
+                        </dx:Series>
+                    </SeriesSerializable>
+                </dx:WebChartControl>
+
+            </td>
+  
+              <td>
+                &nbsp; 
+                  &nbsp; 
+              </td>
+               
+                <td> <dx:WebChartControl ID="WebChartControl2" runat="server" Height="400px" Width="400px" CrosshairEnabled="True">
+                    <DiagramSerializable>
+                        <dx:XYDiagram>
+                            <axisx visibleinpanesserializable="-1">
+                            </axisx>
+                            <axisy visibleinpanesserializable="-1">
+                            </axisy>
+                        </dx:XYDiagram>
+                    </DiagramSerializable>
+<Legend Name="Default Legend"></Legend>
+                    <SeriesSerializable>
+                        <dx:Series Name="Odalar">
+                            <ViewSerializable>
+                                <dx:BubbleSeriesView>
+                                </dx:BubbleSeriesView>
+                            </ViewSerializable>
+                        </dx:Series>
+                    </SeriesSerializable>
+                </dx:WebChartControl>
+            </td>
+         
+          
+        </tr>
+
+    </table>
 </div>
+
+ 
+</div>
+
+ </form>
+
 
 <!-- Container (Portfolio Section) -->
 <div id="portfolio" class="container-fluid text-center bg-grey">
@@ -465,7 +530,12 @@
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p>Bootstrap Theme Made By  w3schools">www.w3schools.com
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Bootstrap Theme Made By  w3schools">www.w3schools.com</p>
 </footer>
 
 <script>
